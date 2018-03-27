@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
-public class Message
+namespace JyFramework
 {
-    public string Name;
-    public Message(string name)
+    public interface IEventAction
     {
-
+        void ExecuteEvent(params object[] parms);
     }
 }
-

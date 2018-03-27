@@ -2,23 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JyApp
+namespace JyFramework
 {
-    private string _name;
-
-    public JyApp(string name)
+    public class JyApp : BaseJyGame
     {
-        _name = name;
-    }
+        public JyApp(string name = "JyGame"):base(name)
+        {
+            Init();
+        }
 
-    public void Init()
-    {
+        public void Init()
+        {            
 
-    }
-
-    public void Start()
-    {
+        }
 
     }
-
 }

@@ -88,9 +88,11 @@
     <Compile Include="Assets\FrameworkCore\Modules\Data\DataModule.cs" />
     <Compile Include="Assets\FrameworkCore\Modules\Log\LogModule.cs" />
     <Compile Include="Assets\FrameworkCore\Modules\Network\NetworkModule.cs" />
+    <Compile Include="Assets\FrameworkCore\Modules\Network\JySocketClient.cs" />
     <Compile Include="Assets\FrameworkCore\Modules\Object\ObjectModule.cs" />
     <Compile Include="Assets\FrameworkCore\Modules\Res\ResourceModule.cs" />
     <Compile Include="Assets\FrameworkCore\Modules\Script\ScriptModule.cs" />
+    <Compile Include="Assets\FrameworkCore\Modules\Thread\JyThread.cs" />
     <Compile Include="Assets\FrameworkCore\Modules\Thread\ThreadModule.cs" />
     <Compile Include="Assets\FrameworkCore\Modules\Time\TimeModule.cs" />
     <Compile Include="Assets\FrameworkCore\Modules\UI\UIModule.cs" />

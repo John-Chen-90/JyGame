@@ -12,9 +12,18 @@ namespace JyFramework
 
         }
 
-        public override void Init()
+        protected override void OnStart(params object[] parms)
         {
-            base.Init();
+
+        }
+
+        protected override void OnPause(params object[] parms)
+        {
+
+        }
+
+        protected override void OnExit(params object[] parms)
+        {
 
         }
     }

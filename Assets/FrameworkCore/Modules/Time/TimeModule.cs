@@ -10,14 +10,24 @@ namespace JyFramework
         public TimeModule(EventController ec, string name = "TimeModule") : base(ec, name)
         {
 
-        }
+        }     
 
-        public override void Init()
+        protected override void OnStart(params object[] parms)
         {
-            base.Init();
             _updateEvent = (UpdateEvent)CreateEvent<UpdateEvent>();
             RegistEvent(EventConst.UpdateModule, _updateEvent);
         }
+
+        protected override void OnPause(params object[] parms)
+        {
+
+        }
+
+        protected override void OnExit(params object[] parms)
+        {
+
+        }
+
 
         protected UpdateEvent _updateEvent;
 

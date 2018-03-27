@@ -83,7 +83,7 @@
     <Compile Include="Assets\FrameworkCore\Base\BaseEventAction.cs" />
     <Compile Include="Assets\FrameworkCore\Event\EventConst.cs" />
     <Compile Include="Assets\FrameworkCore\Event\EventController.cs" />
-    <Compile Include="Assets\FrameworkCore\Event\IEventAction.cs" />
+    <Compile Include="Assets\FrameworkCore\Interface\IEventAction.cs" />
     <Compile Include="Assets\FrameworkCore\JyApp.cs" />
     <Compile Include="Assets\FrameworkCore\Modules\Audio\AudioModule.cs" />
     <Compile Include="Assets\FrameworkCore\Modules\Data\DataModule.cs" />

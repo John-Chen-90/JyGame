@@ -1,8 +1,9 @@
-﻿using System;
+﻿using JyFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using UnityEngine;
 
 namespace JyFramework
 {
@@ -37,7 +38,7 @@ namespace JyFramework
         /// <param name="parms"></param>
         protected virtual void OnStart(params object[] parms)
         {
-            
+            Debug.Log("BaseModule OnStart");
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace JyFramework
         /// <param name="parms"></param>
         protected virtual void OnPause(params object[] parms)
         {
-
+            Debug.Log("BaseModule OnPause");
         }
 
         /// <summary>
@@ -56,55 +57,52 @@ namespace JyFramework
         protected virtual void OnExit(params object[] parms)
         {
             RemoveModule();
-        }
 
-        /// <summary>
-        /// 创建事件
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        protected BaseEventAction CreateEvent<T>() where T : BaseEventAction
-        {
-            BaseEventAction bea = new BaseEventAction(this);
-            return (T)bea;
+            Debug.Log("BaseModule OnExit");
         }
 
         /// <summary>
         /// 当前模块得到通知需要执行的事件
         /// </summary>
         /// <param name="parms"> 执行事件参数 </param>
-        protected class StartEvent : BaseEventAction
+        protected class StartEvent : IEventAction
         {
-            protected StartEvent(BaseModule module) : base(module)
+            protected BaseModule _module;
+            public StartEvent(BaseModule module)
             {
-
+                _module = module;
             }
 
-            public override void ExecuteEvent(params object[] parms)
+            public void ExecuteEvent(params object[] parms)
             {
                 _module.OnStart(parms);
             }
         }
 
-        protected class PauseEvent : BaseEventAction
+        protected class PauseEvent : IEventAction
         {
-            public PauseEvent(BaseModule module) : base(module)
+            protected BaseModule _module;
+            public PauseEvent(BaseModule module)
             {
+                _module = module;
             }
 
-            public override void ExecuteEvent(params object[] parms)
+            public void ExecuteEvent(params object[] parms)
             {
                 _module.OnPause(parms);
             }
         }
 
-        protected class ExitEvent : BaseEventAction
+        protected class ExitEvent : IEventAction
         {
-            public ExitEvent(BaseModule module) : base(module)
+            protected BaseModule _module;
+
+            public ExitEvent(BaseModule module)
             {
+                _module = module;
             }
 
-            public override void ExecuteEvent(params object[] parms)
+            public void ExecuteEvent(params object[] parms)
             {
                 _module.OnExit(parms);
             }
@@ -121,9 +119,9 @@ namespace JyFramework
         public BaseModule(EventController ec, string name = "BaseModule")
         {
             _name = name;
-            _startEvent = (StartEvent)CreateEvent<StartEvent>();
-            _pauseEvent = (PauseEvent)CreateEvent<PauseEvent>();
-            _exitEvent = (ExitEvent)CreateEvent<ExitEvent>();
+            _startEvent = new StartEvent(this);
+            _pauseEvent = new PauseEvent(this);
+            _exitEvent = new ExitEvent(this);
 
             _eventCtrl = ec;
             RegistModule();

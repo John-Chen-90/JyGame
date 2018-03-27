@@ -15,8 +15,6 @@ namespace GameCore
         void Awake()
         {
             App = new JyApp("JyGame");
-            App.Init();
-
             _ins = GetComponent<GameMain>();
         }
 
@@ -28,6 +26,11 @@ namespace GameCore
         void Update()
         {
             App.NotifyUpdate(Time.deltaTime);
+        }
+
+        void OnDestroy()
+        {
+            App.RemoveAllModule();
         }
     }
 }

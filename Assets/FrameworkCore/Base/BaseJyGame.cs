@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ namespace JyFramework
 
         // UI模块
         public UIModule UIModule { get { return _moduleCtrl.UIModule; } }
+        // 日志模块
+        public LogModule LogModule { get { return _moduleCtrl.LogModule; } }
         // 时间模块
         public TimeModule TimeModule { get { return _moduleCtrl.TimeModule; } }
         // 数据模块(数据库的读写)
@@ -32,7 +35,7 @@ namespace JyFramework
         // 脚本模块
         public ScriptModule ScriptModule { get { return _moduleCtrl.ScriptModule; } }
         // 网络模块
-        public NetworkModule NetworkModule { get { return _moduleCtrl.NetworkModule; } }
+        public NetworkModule NetworkModule { get { return _moduleCtrl.NetworkModule; } }        
 
         /// <summary>
         /// 构造函数
@@ -44,6 +47,8 @@ namespace JyFramework
             _eventCtrl = new EventController();
             _moduleCtrl = new BaseModuleController();
             _moduleCtrl.InstanceModules(_eventCtrl);
+
+            Debug.Log("BaseJyGame Ctor");
         }
 
         /// <summary>
@@ -52,11 +57,18 @@ namespace JyFramework
         public void StartAllModule()
         {
             EventCtrl.NotifyEvent(EventConst.StartModule);
+            Debug.Log("BaseJyGame StartAllModule");
         }
 
         public void NotifyUpdate(float deltaTime)
         {
             EventCtrl.NotifyEvent(EventConst.UpdateModule, deltaTime);
+            Debug.Log("BaseJyGame NotifyUpdate");
+        }
+
+        public void RemoveAllModule()
+        {
+            EventCtrl.NotifyEvent(EventConst.ExitGame);
         }
 
         

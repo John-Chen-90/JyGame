@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace JyFramework
 {
@@ -25,6 +26,8 @@ namespace JyFramework
         public TimeModule TimeModule;
         // 线程模块
         public ThreadModule ThreadModule;
+        // 日志模块
+        public LogModule LogModule;
 
         /// <summary>
         /// 实例化并且初始化模块
@@ -32,15 +35,17 @@ namespace JyFramework
         /// <param name="eventCtrl"></param>
         public void InstanceModules(EventController eventCtrl)
         {
-            UIModule = BaseGameFactory.CreateModule<UIModule>(eventCtrl);
-            DataModule = BaseGameFactory.CreateModule<DataModule>(eventCtrl);
-            TimeModule = BaseGameFactory.CreateModule<TimeModule>(eventCtrl);
-            AudioModule = BaseGameFactory.CreateModule<AudioModule>(eventCtrl);
-            ResModule = BaseGameFactory.CreateModule<ResourceModule>(eventCtrl);
-            ObjectModule = BaseGameFactory.CreateModule<ObjectModule>(eventCtrl);
-            ScriptModule = BaseGameFactory.CreateModule<ScriptModule>(eventCtrl);
-            ThreadModule = BaseGameFactory.CreateModule<ThreadModule>(eventCtrl);
-            NetworkModule = BaseGameFactory.CreateModule<NetworkModule>(eventCtrl);
+            UIModule = new UIModule(eventCtrl);
+            LogModule = new LogModule(eventCtrl);
+            DataModule = new DataModule(eventCtrl);
+            TimeModule = new TimeModule(eventCtrl);
+            AudioModule = new AudioModule(eventCtrl);
+            ResModule = new ResourceModule(eventCtrl);
+            ObjectModule = new ObjectModule(eventCtrl);
+            ScriptModule = new ScriptModule(eventCtrl);
+            ThreadModule = new ThreadModule(eventCtrl);
+            NetworkModule = new NetworkModule(eventCtrl);
+            Debug.Log("BaseModuleController InstanceModules");
         }
     }
 }

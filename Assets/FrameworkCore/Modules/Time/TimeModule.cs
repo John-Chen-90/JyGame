@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace JyFramework
 {
@@ -14,34 +15,40 @@ namespace JyFramework
 
         protected override void OnStart(params object[] parms)
         {
-            _updateEvent = (UpdateEvent)CreateEvent<UpdateEvent>();
-            RegistEvent(EventConst.UpdateModule, _updateEvent);
+            _updateEvent = new UpdateEvent(this);
+            _eventCtrl.RegistEvent(EventConst.UpdateModule, _updateEvent);
+
+            Debug.Log("TimeModule OnStart");
         }
 
         protected override void OnPause(params object[] parms)
         {
-
+            Debug.Log("TimeModule OnPause");
         }
 
         protected override void OnExit(params object[] parms)
         {
-
+            Debug.Log("TimeModule OnExit");
         }
 
+        protected virtual void OnUpdate(params object[] parms)
+        {
+            Debug.Log("TimeModule OnUpdate");
+        }
 
         protected UpdateEvent _updateEvent;
 
-        protected class UpdateEvent : BaseEventAction
+        protected class UpdateEvent : IEventAction
         {
-            public UpdateEvent(BaseModule module):base(module)
+            protected TimeModule _module;
+            public UpdateEvent(TimeModule module)
             {
-
+                _module = module;
             }
 
-            public override void ExecuteEvent(params object[] parms)
+            public void ExecuteEvent(params object[] parms)
             {
-                float deltaTime = (float)parms[0];
-
+                _module.OnUpdate(parms);
             }
         }
     }

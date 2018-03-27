@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,13 +9,7 @@ namespace JyFramework
     {
         public JyApp(string name = "JyGame"):base(name)
         {
-            Init();
+            Debug.Log("JyApp Ctor");
         }
-
-        public void Init()
-        {            
-
-        }
-
     }
 }

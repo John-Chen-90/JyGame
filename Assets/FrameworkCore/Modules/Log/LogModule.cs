@@ -6,25 +6,27 @@ using UnityEngine;
 
 namespace JyFramework
 {
-    public class ScriptModule : BaseModule
+    public class LogModule : BaseModule
     {
-        public ScriptModule(EventController ec, string name = "ScriptModule") : base(ec, name)
+        public LogModule(EventController ec, string name = "LogModule") : base(ec, name)
         {
+
         }
 
         protected override void OnStart(params object[] parms)
         {
-            Debug.Log("ScriptModule OnStart");
+            Debug.Log("LogModule OnStart");
         }
 
         protected override void OnPause(params object[] parms)
         {
-            Debug.Log("ScriptModule OnPause");
+            Debug.Log("LogModule OnPause");
         }
 
         protected override void OnExit(params object[] parms)
         {
-            Debug.Log("ScriptModule OnExit");
+            Debug.Log("LogModule OnExit");
         }
+
     }
 }

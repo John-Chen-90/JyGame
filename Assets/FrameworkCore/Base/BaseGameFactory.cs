@@ -12,8 +12,7 @@ namespace JyFramework
     {
         public static T CreateModule<T>(EventController eventCtrl) where T : BaseModule
         {
-            BaseModule module = (T)new BaseModule(eventCtrl);            
-            return (T)module;
+            return default(T);
         }
 
     }
